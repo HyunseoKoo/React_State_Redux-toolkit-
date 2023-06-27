@@ -1,14 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
-import { changeNumber } from "../Store/store";
+import { useDispatch } from "react-redux";
 
 function Right3() {
-    let number = useSelector((state) => state)
-    let dispatch = useDispatch();
-
+    // redux 사용법 5. onClick 이벤트를 사용하기 위해서 action을 다룰수 있는(? 내피셜) useDispatch를 사용합니다.
+    const dispatch = useDispatch(); 
     return (
         <div>
             <h2>Right3</h2>
-            <input type="button" value="+" onClick={dispatch(changeNumber(number))}></input>
+            <input type="button" value="+" onClick={() => {
+                // redux 사용법 6. useDispatch를 사용해서 dispatch를 가져옵니다.
+                dispatch({type: 'PLUS'});
+            }}></input>
         </div>
     )
 }

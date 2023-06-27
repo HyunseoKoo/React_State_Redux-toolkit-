@@ -1,0 +1,7 @@
+react redux의 불편한 점을 해결하고자 나온 라이브러리가 "redux toolkit"
+
+* react-redux의 불편한 점
+1. 설정할 것들이 많음
+2. 미들웨어 설치가 복잡함
+3. 반복적으로 작성해야 하는 코드들이 많음 ex) action create
+4. 불변성 유지가 어려움
