@@ -7,7 +7,7 @@ import styled from "styled-components";
 // redux 사용법 1. createStore를 import 해줍니다 & store는 수정하면 안되기 때문에 store라는 변수에 담아줍니다.
 import { createStore } from 'redux';
 // redux 사용법 4. redux 3인방을 import 해줍니다. (Provider:어떤 컴포넌트에 state를 제공할지 울타리로 정의하는 것, useSelector:어떤 state를 쓸지 선택, useDispatch:state값을 변경할때 사용, connect)
-import { Provider, useSelector, useDispatch } from 'react-redux';
+import { Provider } from 'react-redux';
 
 // redux 사용법 2. reducer를 만들어줍니다. reducer는 store 안에 있는 state를 어떻게 바꿀것인가를 결정합니다.
 function reducer(currentState, action) {
@@ -27,7 +27,6 @@ function reducer(currentState, action) {
 const store = createStore(reducer);
 
 function App() {
-  const [number, setNumber] = useState(1);
   return (
     <S.Container>
         <h1>Root</h1>

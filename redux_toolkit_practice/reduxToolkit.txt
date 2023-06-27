@@ -5,3 +5,62 @@ react redux의 불편한 점을 해결하고자 나온 라이브러리가 "redux
 2. 미들웨어 설치가 복잡함
 3. 반복적으로 작성해야 하는 코드들이 많음 ex) action create
 4. 불변성 유지가 어려움
+
+* 설치
+npm i @reduxjs/toolkit
+
+
+=================================================================
+* react-redux에서 전역 상태 관리할 state의 초기값 설정 방법으로 2가지가 있습니다 !
+1. reducer 함수에서 초기값 지정
+ex)
+function reducer(currentState, action) {
+  if(currentState === undefined) {      // 🎉 이렇게!
+    return {
+      number: 1
+    }
+  }
+  const newState = {...currentState};
+  if(action.type === 'PLUS') {
+    newState.number++;
+  }
+  return newState;
+}
+const store = createStore(reducer);
+
+export default function App() {
+  return (
+    <S.Container>
+        <h1>Root</h1>
+        <S.Grid>
+          <Provider store={store}>
+            <Left1/>
+            <Right1/>
+          </Provider>
+        </S.Grid>
+    </S.Container>
+  );
+}
+-----------------------------------------------------------------
+2. 저장소 만드는 createStore 메서드의 인자로 초기값 지정
+ex)
+function reducer(state, action) {
+  if(action.type === 'up') {
+    return {...state, value:state.value + action.step}
+  }
+  return state;
+}
+
+const initialState = {value: 0};  // 🎉 이렇게!
+const store = createStore(reducer, initialState);
+
+export default function App() {
+  return (
+    <Provider store={store}>
+      <div className="App">
+        <Counter />
+      </div>
+    </Provider>
+  );
+}
+=================================================================
